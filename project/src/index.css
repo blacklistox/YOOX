@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-green: #00A651;
+  --primary-blue: #0072BC;
+  --primary-red: #ED1C24;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  @apply bg-gray-50;
+}
+
+.gradient-green {
+  @apply bg-gradient-to-r from-emerald-500 to-green-500;
+}
+
+.gradient-blue {
+  @apply bg-gradient-to-r from-blue-500 to-cyan-500;
+}
+
+.gradient-red {
+  @apply bg-gradient-to-r from-red-500 to-rose-500;
+}
+
+.gradient-yellow {
+  @apply bg-gradient-to-r from-amber-400 to-yellow-500;
+}
+
+.gradient-purple {
+  @apply bg-gradient-to-r from-purple-500 to-violet-500;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 0.5rem;
+  background: linear-gradient(to right, #00A651, #0072BC);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  gap: 1rem;
+}
+
+.bento-card {
+  @apply bg-white rounded-xl shadow-md overflow-hidden;
+}
+
+.news-item {
+  @apply border-l-4 p-3 md:p-4 mb-2 bg-white rounded-lg shadow-sm;
+}
+
+.news-item.pinned {
+  @apply border-l-4 border-amber-500 bg-amber-50;
+}
+
+.news-item.critical {
+  @apply border-l-4 border-red-500 bg-red-50;
+}
+
+.news-item.important {
+  @apply border-l-4 border-blue-500 bg-blue-50;
+}
+
+.news-item.normal {
+  @apply border-l-4 border-gray-300;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .recharts-wrapper .recharts-surface {
+    overflow: visible;
+  }
+  
+  .recharts-legend-item-text {
+    font-size: 10px;
+  }
+  
+  .recharts-tooltip-item-name,
+  .recharts-tooltip-item-value {
+    font-size: 12px;
+  }
+}
